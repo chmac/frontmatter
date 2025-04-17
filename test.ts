@@ -59,3 +59,25 @@ no front matter
     content: example,
   });
 });
+
+Deno.test("no front matter but hrs", () => {
+  const example = `
+There is
+no front matter
+
+---
+
+But there are hrs
+
+---
+
+And not just one
+  `.trim();
+
+  const obj = parse(example);
+
+  assertEquals(obj, {
+    data: undefined,
+    content: example,
+  });
+});
